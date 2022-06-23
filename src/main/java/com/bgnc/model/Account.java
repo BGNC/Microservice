@@ -8,6 +8,21 @@ public class Account {
     private String email;
     private String password;
 
+    public Account(String id) {
+        this.id = id;
+    }
+
+    public Account() {
+
+    }
+
+    public Account(String id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
