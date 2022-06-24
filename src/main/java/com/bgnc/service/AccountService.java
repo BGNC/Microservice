@@ -6,6 +6,8 @@ import com.bgnc.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.util.List;
+
 @Service
 public class AccountService {
 
@@ -40,4 +42,7 @@ public class AccountService {
     }
 
 
+    public List<Account> findAll() {
+        return accountRepository.findAll();
+    }
 }
