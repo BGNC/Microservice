@@ -1,57 +1,43 @@
 package com.bgnc.model;
 
 
-public class Account {
+import lombok.*;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
-    private String id;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.UUID;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(of="id")
+@ToString
+@Table(value="accounts")
+public class Account implements Serializable {
+
+    @PrimaryKey
+    private String id= UUID.randomUUID().toString();
+
+    @Column(value = "uname")
     private String username;
+    @Column(value = "email")
     private String email;
+    @Column(value="pwd")
     private String password;
 
-    public Account(String id) {
-        this.id = id;
-    }
+    @Column(value = "created_at")
+    private Date createdAt;
 
-    public Account() {
 
-    }
+    @Column(value = "is_active")
+    private Boolean active;
 
-    public Account(String id, String username, String email, String password) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 }
